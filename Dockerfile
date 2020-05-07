@@ -11,4 +11,4 @@ EXPOSE 80
 
 # This states to copy from 'builder' phase specified above
 # And then specifies to copy /app/build folder in the dir specified
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=0 /app/build /usr/share/nginx/html
