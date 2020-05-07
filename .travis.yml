@@ -16,7 +16,7 @@ script:
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
-  app: "DockerReact"
+  app: "docker-react"
   env: "DockerReact-env"
   bucket_name: "aws-logs-633226805238-us-east-2"
   bucket_path: "DockerReact"
