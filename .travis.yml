@@ -1,0 +1,13 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+
+before_install:
+  - docker build -t rnwokoye/docker-react -f Dockerfile.dev .
+
+
+script:
+  - docker run -e CI=true rnwokoye/docker-react npm run test
+  # - docker run rnwokoye/docker-react npm run test -- --coverage
