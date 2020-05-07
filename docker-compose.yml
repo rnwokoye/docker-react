@@ -1,0 +1,32 @@
+# oour docker version
+version: '3'
+
+# services are containers to be created when we run docker-compose up
+services:
+  # we can name it anything we want. this is a variable
+  web:
+    # Here we specify the image known as 'web' app we choose above
+    stdin_open: true
+    build:
+      # use context cmd to indicate from where to compose our build
+      context: .
+      # here we now specify which file to use within the current directory
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app
+
+# The above volume says to 'not' map /app/node_modules
+# And the '.' says to map our current WORKDIR to the container's /app directory
+
+  tests:
+    # stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"]
